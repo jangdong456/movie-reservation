@@ -1,10 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
         <title>Memico - Cinema Bootstrap HTML5 Template</title>
+
         <!-- Bootstrap -->
         <link href="/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 
@@ -12,7 +11,6 @@
         <link href="/animate.css/animate.css" rel="stylesheet" type="text/css" />
 
         <!-- Font Awesome iconic font -->
-
         <link href="/fontawesome/css/fontawesome-all.css" rel="stylesheet" type="text/css" />
 
         <!-- Magnific Popup -->
@@ -28,3 +26,4 @@
         <!-- Theme styles -->
         <link href="/css/dot-icons.css" rel="stylesheet" type="text/css">
         <link href="/css/theme.css" rel="stylesheet" type="text/css">
+    </head>
