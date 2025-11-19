@@ -9,21 +9,19 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class HomeService {
 
     private final HomeRepository homeRepository;
 
-    @Transactional
-    public Home test(String username) {
-        System.out.println("=== Serviec ===");
-        Home home = new Home();
-        home.setUsername(username);
-
-        Home saveHome = homeRepository.save(home);
-        return saveHome;
-    }
-
     public List<Home> findAllUsers() {
         return homeRepository.findAll();
+    }
+
+    @Transactional
+    public void createMember(HomeDTO homeDTO) {
+        Home newHome = homeDTO.toEntity();
+
+        homeRepository.save(newHome);
     }
 }
