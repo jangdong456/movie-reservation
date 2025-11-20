@@ -1,22 +1,17 @@
-package jang.app.movie;
-
-
+package jang.app.screens.screen;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import lombok.*;
-import org.springframework.data.annotation.Id;
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
-public class Home {
-
-    @Id
-    @GeneratedValue
-    private Long id;
-    private String username;
-
+public class screenEntity {
+    @Id @GeneratedValue
+    private int screen_id;
+    private int screen_number;
 }

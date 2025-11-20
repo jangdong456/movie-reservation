@@ -1,22 +1,18 @@
-package jang.app.movie;
-
-
+package jang.app.cinemas;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import lombok.*;
-import org.springframework.data.annotation.Id;
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
-public class Home {
-
+public class cinemaEntity {
     @Id
     @GeneratedValue
-    private Long id;
-    private String username;
-
+    private int cinema_id;
+    private String cinema_name;
 }
