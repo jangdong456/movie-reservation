@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
         <header class="header header-horizontal header-view-pannel">
             <div class="container">
                 <nav class="navbar">
@@ -7,7 +8,7 @@
                                 <span class="svg-content svg-fill-theme" data-svg="/images/svg/logo-part.svg"></span>
                             </span>
                             <span class="logo-text text-uppercase">
-                                <span>M</span>emico</span>
+                                <span>C</span>홈</span>
                         </span>
                     </a>
                     <button class="navbar-toggler" type="button">
@@ -20,7 +21,7 @@
                     <div class="navbar-collapse">
                         <ul class="navbar-nav">
                             <li class="nav-item nav-item-arrow-down nav-hover-show-sub">
-                                <a class="nav-link" href="#">Homepage</a>
+                                <a class="nav-link" href="#">홈</a>
                                 <div class="nav-arrow"><i class="fas fa-chevron-down"></i></div>
                                 <ul class="collapse nav">
                                     <li class="nav-item">
@@ -35,7 +36,7 @@
                                 </ul>
                             </li>
                             <li class="nav-item nav-item-arrow-down nav-hover-show-sub">
-                                <a class="nav-link" href="#" data-role="nav-toggler">Pages</a>
+                                <a class="nav-link" href="#" data-role="nav-toggler">예매예약</a>
                                 <div class="nav-arrow"><i class="fas fa-chevron-down"></i></div>
                                 <ul class="collapse nav">
                                     <li class="nav-item nav-item-arrow-down nav-hover-show-sub">
