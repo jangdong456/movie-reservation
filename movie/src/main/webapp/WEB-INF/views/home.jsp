@@ -8,12 +8,6 @@
         <body class="body">
             <c:import url="template/nav.jsp"></c:import>
 
-            <c:forEach var="user" items="${users}">
-                <div>
-                    사용자 ID : ${user.id}, 이름 : ${user.username}
-                </div>
-            </c:forEach>
-
             <section class="section-text-white position-relative">
                 <div class="d-background" data-image-src="http://placehold.complaceholder.com/1920x1080" data-parallax="scroll"></div>
                 <div class="d-background bg-theme-blacked"></div>

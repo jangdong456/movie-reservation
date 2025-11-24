@@ -8,7 +8,7 @@
                                 <span class="svg-content svg-fill-theme" data-svg="/images/svg/logo-part.svg"></span>
                             </span>
                             <span class="logo-text text-uppercase">
-                                <span>C</span>홈</span>
+                                <span>C</span>GV</span>
                         </span>
                     </a>
                     <button class="navbar-toggler" type="button">
@@ -21,7 +21,7 @@
                     <div class="navbar-collapse">
                         <ul class="navbar-nav">
                             <li class="nav-item nav-item-arrow-down nav-hover-show-sub">
-                                <a class="nav-link" href="#">홈</a>
+                                <a class="nav-link" href="#">예매</a>
                                 <div class="nav-arrow"><i class="fas fa-chevron-down"></i></div>
                                 <ul class="collapse nav">
                                     <li class="nav-item">
@@ -36,86 +36,59 @@
                                 </ul>
                             </li>
                             <li class="nav-item nav-item-arrow-down nav-hover-show-sub">
-                                <a class="nav-link" href="#" data-role="nav-toggler">예매예약</a>
+                                <a class="nav-link" href="#" data-role="nav-toggler">영화관</a>
                                 <div class="nav-arrow"><i class="fas fa-chevron-down"></i></div>
                                 <ul class="collapse nav">
                                     <li class="nav-item nav-item-arrow-down nav-hover-show-sub">
-                                        <a class="nav-link" href="#" data-role="nav-toggler">Movies</a>
+                                        <a class="nav-link" href="#" data-role="nav-toggler">서울</a>
                                         <div class="nav-arrow"><i class="fas fa-chevron-down"></i></div>
                                         <ul class="collapse nav">
                                             <li class="nav-item">
-                                                <a class="nav-link" href="movies-blocks.html">Blocks - No Sidebar</a>
+                                                <a class="nav-link" href="movies-blocks.html">서울1</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="movies-blocks-sidebar-right.html">Blocks - Sidebar right</a>
+                                                <a class="nav-link" href="movies-blocks-sidebar-right.html">서울2</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="movies-posters.html">Posters - No Sidebar</a>
+                                                <a class="nav-link" href="movies-posters.html">서울3</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="movies-posters-sidebar-right.html">Posters - Sidebar right</a>
+                                                <a class="nav-link" href="movies-posters-sidebar-right.html">서울4</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="movies-list.html">List - No Sidebar</a>
+                                                <a class="nav-link" href="movies-list.html">서울5</a>
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="movie-info-sidebar-right.html">Movie info</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="gallery.jsp">Gallery</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="news-blocks-sidebar-right.html">News</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="article-sidebar-right.jsp">Article</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="about-us.html">About us</a>
-                                    </li>
+
+
                                     <li class="nav-item nav-item-arrow-down nav-hover-show-sub">
-                                        <a class="nav-link" href="#" data-role="nav-toggler">User pages</a>
+                                        <a class="nav-link" href="#" data-role="nav-toggler">인천</a>
                                         <div class="nav-arrow"><i class="fas fa-chevron-down"></i></div>
                                         <ul class="collapse nav">
                                             <li class="nav-item">
-                                                <a class="nav-link" href="sign-in.html">Sign in</a>
+                                                <a class="nav-link" href="sign-in.html">인천1</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="sign-up.html">Sign up</a>
+                                                <a class="nav-link" href="sign-up.html">인천2</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="sign-up.html">인천3</a>
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="nav-item nav-item-arrow-down nav-hover-show-sub">
-                                        <a class="nav-link" href="#" data-role="nav-toggler">Status pages</a>
-                                        <div class="nav-arrow"><i class="fas fa-chevron-down"></i></div>
-                                        <ul class="collapse nav">
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="under-construction.html">Under construction</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="coming-soon.html">Coming soon</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="404-1.jsp">404 - 1</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="404-2.html">404 - 2</a>
-                                            </li>
-                                        </ul>
-                                    </li>
+
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="movies-blocks.html">Movies</a>
+                                <a class="nav-link" href="movies-blocks.html">영화</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="contact-us.jsp">Contact us</a>
+                                <a class="nav-link" href="contact-us.jsp">고객센터</a>
                             </li>
                         </ul>
                         <div class="navbar-extra">
-                            <a class="btn-theme btn" href="#"><i class="fas fa-ticket-alt"></i>&nbsp;&nbsp;Buy Ticket</a>
+                            <a class="btn-theme btn" href="/member/login"><i class="fas fa-ticket-alt"></i>&nbsp;&nbsp;로그인</a>
                         </div>
                     </div>
                 </nav>

@@ -29,16 +29,20 @@ public class MemberEntity {
     private String memberPassword;
 
     @Column(name = "member_phone", nullable = false)
-    private int memberPhone;
+    private String memberPhone;
+
+    @Column(name = "member_name", nullable = false)
+    private String memberName;
 
     // 1:N 관계
     @OneToMany(mappedBy = "memberEntity")
     private List<ReservationEntity> reservationEntityList = new ArrayList<>();
 
     @Builder
-    public MemberEntity(String loginId, String memberPassword, int memberPhone) {
+    public MemberEntity(String loginId, String memberPassword, String memberPhone, String memberName) {
         this.loginId = loginId;
         this.memberPassword = memberPassword;
         this.memberPhone = memberPhone;
+        this.memberName = memberName;
     }
 }

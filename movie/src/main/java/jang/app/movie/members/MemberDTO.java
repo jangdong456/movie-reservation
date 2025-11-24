@@ -8,13 +8,15 @@ import lombok.Data;
 public class MemberDTO {
     private String loginId;
     private String memberPassword;
-    private int memberPhone;
+    private String memberPhone;
+    private String memberName;
 
     public MemberEntity toEntity() {
         return MemberEntity.builder()
                 .loginId(this.loginId)
                 .memberPassword(this.memberPassword)
                 .memberPhone(this.memberPhone)
+                .memberName(this.memberName)
                 .build();
 
     }
