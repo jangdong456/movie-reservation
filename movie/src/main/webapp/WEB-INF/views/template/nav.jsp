@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <header class="header header-horizontal header-view-pannel">
             <div class="container">
                 <nav class="navbar">
@@ -88,7 +89,25 @@
                             </li>
                         </ul>
                         <div class="navbar-extra">
-                            <a class="btn-theme btn" href="/member/login"><i class="fas fa-ticket-alt"></i>&nbsp;&nbsp;로그인</a>
+                            <c:if test="${empty sessionScope.loggedInId}">
+                                <%-- 1. 로그인 되어 있지 않을 때 (세션 ID가 비어있을 때) --%>
+                                <a class="btn-theme btn" href="/member/login">
+                                    <i class="fas fa-ticket-alt"></i>&nbsp;&nbsp;로그인
+                                </a>
+                            </c:if>
+
+                            <c:if test="${not empty sessionScope.loggedInId}">
+                                <%-- 2. 로그인 되어 있을 때 (세션 ID가 비어있지 않을 때) --%>
+
+                                <a class="btn-theme btn" href="/member/logout">
+                                    <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;로그아웃
+                                </a>
+
+                                <%-- 선택 사항: 사용자 이름 표시 --%>
+                                <span class="text-white ml-3">
+                                    ${sessionScope.loggedInId}님
+                                </span>
+                            </c:if>
                         </div>
                     </div>
                 </nav>

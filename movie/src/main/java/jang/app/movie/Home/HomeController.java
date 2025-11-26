@@ -22,7 +22,7 @@ public class HomeController {
         List<Home> userList = homeService.findAllUsers();
         model.addAttribute("users", userList);
 
-        return "home";
+        return "index";
     }
 
     @ResponseBody

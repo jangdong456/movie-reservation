@@ -26,6 +26,8 @@
                                             <img class="embed-responsive-item" src="http://placehold.com/340x510" alt="" />
                                         </div>
                                         <div class="d-background bg-theme-lighted collapse animated faster" data-show-class="fadeIn show" data-hide-class="fadeOut show"></div>
+
+                                        <!-- 메인화면 포스터 밑 영상링크 걸리는 부분 -->
                                         <div class="d-over bg-highlight-bottom">
                                             <div class="collapse animated faster entity-play" data-show-class="fadeIn show" data-hide-class="fadeOut show">
                                                 <a class="action-icon-theme action-icon-bordered rounded-circle" href="https://www.youtube.com/watch?v=d96cjJhvlMA" data-magnific-popup="iframe">

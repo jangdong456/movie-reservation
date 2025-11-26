@@ -24,7 +24,8 @@
                                     <i class="fas fa-exclamation-triangle mr-2"></i> 아이디 또는 비밀번호가 일치하지 않습니다.
                                 </div>
 
-                                <form action="/member/loginProcess" method="POST">
+                                <!-- ==== form 시작 부분 ==== -->
+                                <form action="/member/login" method="POST">
 
                                     <div class="form-group">
                                         <label class="small mb-1" for="inputUsername">아이디</label>
@@ -35,7 +36,7 @@
                                             <input type="text"
                                                    class="form-control py-4"
                                                    id="inputUsername"
-                                                   name="username"
+                                                   name="loginId"
                                                    placeholder="아이디 입력"
                                                    required>
                                         </div>
@@ -50,7 +51,7 @@
                                             <input type="password"
                                                    class="form-control py-4"
                                                    id="inputPassword"
-                                                   name="password"
+                                                   name="memberPassword"
                                                    placeholder="비밀번호 입력"
                                                    required>
                                         </div>
@@ -69,6 +70,7 @@
                                     </div>
 
                                 </form>
+                                <!-- ==== form 끝 부분 ==== -->
                             </div>
 
                             <div class="card-footer text-center">
