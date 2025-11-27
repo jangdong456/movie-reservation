@@ -1,4 +1,4 @@
-package jang.app.movie.tmdb;
+package jang.app.movie.config;
 
 
 import org.springframework.context.annotation.Bean;
