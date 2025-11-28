@@ -1,20 +1,23 @@
 package jang.app.movie.movies;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class MovieService {
 
-    @Autowired
-    private RestTemplate restTemplate;
+    private final RestTemplate restTemplate;
+    private final MovieRepository movieRepository;
 
     @Value("${tmdb.api-key}")
     private String apiKey;
@@ -36,20 +39,37 @@ public class MovieService {
         // 2. get으로 요청해서 데이터 담기
         TmdbResponseDTO response = restTemplate.getForObject(requestUrl, TmdbResponseDTO.class);
 
+        String imageBaseUrl = "https://image.tmdb.org/t/p/w500";
         // 3. 원하는 데이터만 추출하기
         if (response != null && response.getResults() != null) {
             // getResults() : 리스트를 추출하는 메서드
             List<MovieDTO> results = response.getResults();
-            log.info("=== API 호출 성공 총 영화 수 : {} 개 ===", results);
+
             if (!results.isEmpty()) {
-                MovieDTO firstMovie = results.get(0);
-                log.info("   첫 번째 영화 제목: {}", firstMovie.getTitle());
-                log.info("   첫 번째 영화 포스터 경로: {}", firstMovie.getPosterPath());
+                for (MovieDTO result : results) {
+                    result.moviesPosterUrl(imageBaseUrl);
+                    MovieEntity movieEntity = result.toEntity();
+
+                    movieRepository.save(movieEntity);
+                }
             }
             return results;
         }
-
         log.warn("응답이 없거나 목록이 비어있습니다.");
         return List.of();
+    }
+
+    public List<MovieDTO> getindex() {
+        List<MovieEntity> entities = movieRepository.findAll();
+        List<MovieDTO> dtos = new ArrayList<>();
+        for (MovieEntity entity : entities) {
+            log.info(">>>>>>>>>>>🕵️‍♂️movieDTO 잘 들어가 있나 확인해보기🕵️‍♂️<<<<<<<<<");
+            MovieDTO dto = entity.toDTO();
+            dtos.add(dto);
+            log.info("확인 작업 {}: ",dtos);
+            log.info(">>>>>>>>>>>🕵️‍♂️movieDTO 잘 들어가 있나 확인해보기🕵️‍♂️<<<<<<<<<");
+        }
+
+        return dtos;
     }
 }

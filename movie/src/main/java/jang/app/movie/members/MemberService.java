@@ -30,6 +30,7 @@ public class MemberService {
 
         Optional<MemberEntity> member = memberRepository.findByLoginId(memberEntity.getLoginId());
         log.info("===== 디비에 있는 값 member : {} ",member.get().getMemberPassword());
+
         // isPresent() : 객체가 있느냐 없느냐 확인하는 메서드
         // 반환 값 : boolean -> true, false
         if (member.isPresent()) {

@@ -3,6 +3,7 @@ package jang.app.movie.movies;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -20,4 +21,13 @@ public class MovieController {
     public List<MovieDTO> getMovieData() {
         return movieService.getMovieData();
     }
+
+    @GetMapping("/movie/data")
+    public String index(Model model) {
+        List<MovieDTO> movieDto = movieService.getindex();
+        model.addAttribute("movieDto", movieDto);
+        return "index";
+    }
+
+
 }

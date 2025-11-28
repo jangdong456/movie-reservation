@@ -20,10 +20,16 @@
                     <div class="top-block-footer">
                         <div class="slick-spaced slick-carousel" data-slick-view="navigation responsive-4">
                             <div class="slick-slides">
+
+                            <c:forEach var="movie" items="${movieDto}" end="7">
+
                                 <div class="slick-slide">
                                     <article class="poster-entity" data-role="hover-wrap">
                                         <div class="embed-responsive embed-responsive-poster">
-                                            <img class="embed-responsive-item" src="http://placehold.com/340x510" alt="" />
+
+
+                                        <!-- 메인화면 포스터 이미지 걸리는 첫 부분!! -->
+                                            <img class="embed-responsive-item" src="${movie.posterPath}" alt="" />
                                         </div>
                                         <div class="d-background bg-theme-lighted collapse animated faster" data-show-class="fadeIn show" data-hide-class="fadeOut show"></div>
 
@@ -34,13 +40,11 @@
                                                     <span class="icon-content"><i class="fas fa-play"></i></span>
                                                 </a>
                                             </div>
+
+                                            <!-- 포스터 제목 -->
                                             <h4 class="entity-title">
-                                                <a class="content-link" href="movie-info-sidebar-right.html">Outsider</a>
+                                                <a class="content-link" href="movie-info-sidebar-right.html">${movie.title}</a>
                                             </h4>
-                                            <div class="entity-category">
-                                                <a class="content-link" href="movies-blocks.html">crime</a>,
-                                                <a class="content-link" href="movies-blocks.html">comedy</a>
-                                            </div>
                                             <div class="entity-info">
                                                 <div class="info-lines">
                                                     <div class="info info-short">
@@ -58,10 +62,13 @@
                                         </div>
                                     </article>
                                 </div>
+                            </c:forEach>
+
+                                <!--
                                 <div class="slick-slide">
                                     <article class="poster-entity" data-role="hover-wrap">
                                         <div class="embed-responsive embed-responsive-poster">
-                                            <img class="embed-responsive-item" src="http://placehold.com/340x510" alt="" />
+                                            <img class="embed-responsive-item" src="${movie.posterPath}" alt="" />
                                         </div>
                                         <div class="d-background bg-theme-lighted collapse animated faster" data-show-class="fadeIn show" data-hide-class="fadeOut show"></div>
                                         <div class="d-over bg-highlight-bottom">
@@ -71,12 +78,9 @@
                                                 </a>
                                             </div>
                                             <h4 class="entity-title">
-                                                <a class="content-link" href="movie-info-sidebar-right.html">Moonlight night</a>
+                                                <a class="content-link" href="movie-info-sidebar-right.html">${movie.title}</a>
                                             </h4>
-                                            <div class="entity-category">
-                                                <a class="content-link" href="movies-blocks.html">comedy</a>,
-                                                <a class="content-link" href="movies-blocks.html">horror</a>
-                                            </div>
+
                                             <div class="entity-info">
                                                 <div class="info-lines">
                                                     <div class="info info-short">
@@ -97,7 +101,7 @@
                                 <div class="slick-slide">
                                     <article class="poster-entity" data-role="hover-wrap">
                                         <div class="embed-responsive embed-responsive-poster">
-                                            <img class="embed-responsive-item" src="http://placehold.com/340x510" alt="" />
+                                            <img class="embed-responsive-item" src="${movie.posterPath}" alt="" />
                                         </div>
                                         <div class="d-background bg-theme-lighted collapse animated faster" data-show-class="fadeIn show" data-hide-class="fadeOut show"></div>
                                         <div class="d-over bg-highlight-bottom">
@@ -107,11 +111,9 @@
                                                 </a>
                                             </div>
                                             <h4 class="entity-title">
-                                                <a class="content-link" href="movie-info-sidebar-right.html">Say no</a>
+                                                <a class="content-link" href="movie-info-sidebar-right.html">${movie.title}</a>
                                             </h4>
-                                            <div class="entity-category">
-                                                <a class="content-link" href="movies-blocks.html">sport</a>
-                                            </div>
+
                                             <div class="entity-info">
                                                 <div class="info-lines">
                                                     <div class="info info-short">
@@ -132,7 +134,7 @@
                                 <div class="slick-slide">
                                     <article class="poster-entity" data-role="hover-wrap">
                                         <div class="embed-responsive embed-responsive-poster">
-                                            <img class="embed-responsive-item" src="http://placehold.com/340x510" alt="" />
+                                            <img class="embed-responsive-item" src="${movie.posterPath}" alt="" />
                                         </div>
                                         <div class="d-background bg-theme-lighted collapse animated faster" data-show-class="fadeIn show" data-hide-class="fadeOut show"></div>
                                         <div class="d-over bg-highlight-bottom">
@@ -142,12 +144,9 @@
                                                 </a>
                                             </div>
                                             <h4 class="entity-title">
-                                                <a class="content-link" href="movie-info-sidebar-right.html">Lonely rock</a>
+                                                <a class="content-link" href="movie-info-sidebar-right.html">${movie.title}</a>
                                             </h4>
-                                            <div class="entity-category">
-                                                <a class="content-link" href="movies-blocks.html">drama</a>,
-                                                <a class="content-link" href="movies-blocks.html">historical</a>
-                                            </div>
+
                                             <div class="entity-info">
                                                 <div class="info-lines">
                                                     <div class="info info-short">
@@ -168,7 +167,7 @@
                                 <div class="slick-slide">
                                     <article class="poster-entity" data-role="hover-wrap">
                                         <div class="embed-responsive embed-responsive-poster">
-                                            <img class="embed-responsive-item" src="http://placehold.com/340x510" alt="" />
+                                            <img class="embed-responsive-item" src="${movie.posterPath}" alt="" />
                                         </div>
                                         <div class="d-background bg-theme-lighted collapse animated faster" data-show-class="fadeIn show" data-hide-class="fadeOut show"></div>
                                         <div class="d-over bg-highlight-bottom">
@@ -178,12 +177,9 @@
                                                 </a>
                                             </div>
                                             <h4 class="entity-title">
-                                                <a class="content-link" href="movie-info-sidebar-right.html">Blick</a>
+                                                <a class="content-link" href="movie-info-sidebar-right.html">${movie.title}</a>
                                             </h4>
-                                            <div class="entity-category">
-                                                <a class="content-link" href="movies-blocks.html">comedy</a>,
-                                                <a class="content-link" href="movies-blocks.html">detective</a>
-                                            </div>
+
                                             <div class="entity-info">
                                                 <div class="info-lines">
                                                     <div class="info info-short">
@@ -204,7 +200,7 @@
                                 <div class="slick-slide">
                                     <article class="poster-entity" data-role="hover-wrap">
                                         <div class="embed-responsive embed-responsive-poster">
-                                            <img class="embed-responsive-item" src="http://placehold.com/340x510" alt="" />
+                                            <img class="embed-responsive-item" src="${movie.posterPath}" alt="" />
                                         </div>
                                         <div class="d-background bg-theme-lighted collapse animated faster" data-show-class="fadeIn show" data-hide-class="fadeOut show"></div>
                                         <div class="d-over bg-highlight-bottom">
@@ -214,12 +210,9 @@
                                                 </a>
                                             </div>
                                             <h4 class="entity-title">
-                                                <a class="content-link" href="movie-info-sidebar-right.html">The match</a>
+                                                <a class="content-link" href="movie-info-sidebar-right.html">${movie.title}</a>
                                             </h4>
-                                            <div class="entity-category">
-                                                <a class="content-link" href="movies-blocks.html">romance</a>,
-                                                <a class="content-link" href="movies-blocks.html">historical</a>
-                                            </div>
+
                                             <div class="entity-info">
                                                 <div class="info-lines">
                                                     <div class="info info-short">
@@ -240,7 +233,7 @@
                                 <div class="slick-slide">
                                     <article class="poster-entity" data-role="hover-wrap">
                                         <div class="embed-responsive embed-responsive-poster">
-                                            <img class="embed-responsive-item" src="http://placehold.com/340x510" alt="" />
+                                            <img class="embed-responsive-item" src="${movie.posterPath}" alt="" />
                                         </div>
                                         <div class="d-background bg-theme-lighted collapse animated faster" data-show-class="fadeIn show" data-hide-class="fadeOut show"></div>
                                         <div class="d-over bg-highlight-bottom">
@@ -250,12 +243,9 @@
                                                 </a>
                                             </div>
                                             <h4 class="entity-title">
-                                                <a class="content-link" href="movie-info-sidebar-right.html">In to the deep</a>
+                                                <a class="content-link" href="movie-info-sidebar-right.html">${movie.title}</a>
                                             </h4>
-                                            <div class="entity-category">
-                                                <a class="content-link" href="movies-blocks.html">historical</a>,
-                                                <a class="content-link" href="movies-blocks.html">adventure</a>
-                                            </div>
+
                                             <div class="entity-info">
                                                 <div class="info-lines">
                                                     <div class="info info-short">
@@ -276,7 +266,7 @@
                                 <div class="slick-slide">
                                     <article class="poster-entity" data-role="hover-wrap">
                                         <div class="embed-responsive embed-responsive-poster">
-                                            <img class="embed-responsive-item" src="http://placehold.com/340x510" alt="" />
+                                            <img class="embed-responsive-item" src="${movie.posterPath}" alt="" />
                                         </div>
                                         <div class="d-background bg-theme-lighted collapse animated faster" data-show-class="fadeIn show" data-hide-class="fadeOut show"></div>
                                         <div class="d-over bg-highlight-bottom">
@@ -286,12 +276,9 @@
                                                 </a>
                                             </div>
                                             <h4 class="entity-title">
-                                                <a class="content-link" href="movie-info-sidebar-right.html">New world</a>
+                                                <a class="content-link" href="movie-info-sidebar-right.html">${movie.title}</a>
                                             </h4>
-                                            <div class="entity-category">
-                                                <a class="content-link" href="movies-blocks.html">thriller</a>,
-                                                <a class="content-link" href="movies-blocks.html">horror</a>
-                                            </div>
+
                                             <div class="entity-info">
                                                 <div class="info-lines">
                                                     <div class="info info-short">
@@ -310,6 +297,7 @@
                                     </article>
                                 </div>
                             </div>
+                            -->
                             <div class="slick-arrows">
                                 <div class="slick-arrow-prev">
                                     <span class="th-dots th-arrow-left th-dots-animated">
@@ -318,6 +306,7 @@
                                         <span></span>
                                     </span>
                                 </div>
+
                                 <div class="slick-arrow-next">
                                     <span class="th-dots th-arrow-right th-dots-animated">
                                         <span></span>
@@ -325,11 +314,15 @@
                                         <span></span>
                                     </span>
                                 </div>
+
+
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+
+            <!------------ 중간 화면 ---------->
             <section class="section-long">
                 <div class="container">
                     <div class="section-head">

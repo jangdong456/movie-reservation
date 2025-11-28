@@ -12,6 +12,8 @@ import java.util.List;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "movies")
+@Builder
+@AllArgsConstructor
 public class MovieEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,25 +22,28 @@ public class MovieEntity {
     @Column(name = "title", nullable = false)
     private String title;
 
-    @Column(name = "movie_time", nullable = false)
-    private Duration movieTime;
-
     @Column(name = "poster_path")
     private String posterPath;
 
-    @Column(name = "overview")
+    @Column(name = "overview", columnDefinition = "TEXT")
     private String overview;
 
     // 1:N 관계 movieEntity(1) : showtimeEntity(n)
     @OneToMany(mappedBy = "movieEntity")
     private List<ShowtimeEntity> showtimeEntities = new ArrayList<>();
 
-    @Builder
-    public MovieEntity(String title, Duration movieTime, String posterPath, String overview) {
-        this.title = title;
-        this.movieTime = movieTime;
-        this.posterPath = posterPath;
-        this.overview = overview;
-    }
+//    public MovieEntity(String title, Duration movieTime, String posterPath, String overview) {
+//        this.title = title;
+//        this.posterPath = posterPath;
+//        this.overview = overview;
+//    }
 
+    // Entity -> DTO 전환
+    public MovieDTO toDTO() {
+        return MovieDTO.builder()
+                .title(this.title)
+                .posterPath(this.posterPath)
+                .overview(this.overview)
+                .build();
+        }
 }
