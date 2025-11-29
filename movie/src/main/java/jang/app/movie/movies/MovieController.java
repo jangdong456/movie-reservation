@@ -22,7 +22,7 @@ public class MovieController {
         return movieService.getMovieData();
     }
 
-    @GetMapping("/movie/data")
+    @GetMapping("/")
     public String index(Model model) {
         List<MovieDTO> movieDto = movieService.getindex();
         model.addAttribute("movieDto", movieDto);

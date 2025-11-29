@@ -8,9 +8,9 @@ import lombok.Data;
 public class ReservationSeatDTO {
 
     // 복합키를 이루는 세 필드를 DTO의 필드로 사용
-    private int showtimeId;
-    private int reservationId;
-    private int seatId;
+    private Integer showtimeId;
+    private Long reservationId;
+    private Integer seatId;
 
     public ReservationSeatEntity toEntity() {
         ReservationSeatId complexId = ReservationSeatId.builder()

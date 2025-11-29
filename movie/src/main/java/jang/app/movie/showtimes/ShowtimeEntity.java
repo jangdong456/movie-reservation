@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 public class ShowtimeEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int showtimeId;
+    private Integer showtimeId;
 
     @Column(name = "showtime_data", nullable = false)
     private LocalDateTime showtimeData;

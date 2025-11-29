@@ -15,16 +15,6 @@ public class HomeController {
     @Autowired
     private HomeService homeService;
 
-    @GetMapping("/")
-    public String home(Model model) {
-        System.out.println("==== Controller ===");
-
-        List<Home> userList = homeService.findAllUsers();
-        model.addAttribute("users", userList);
-
-        return "index";
-    }
-
     @ResponseBody
     @Operation(summary = "회원 데이터 저장", description = "AJAX 통신으로 회원 정보를 저장합니다.")
     @PostMapping("/members")

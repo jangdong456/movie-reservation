@@ -10,7 +10,7 @@ import lombok.*;
 @Table(name = "seats")
 public class SeatEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int seatsId;
+    private Integer seatsId;
 
     @Column(name = "seat_number", nullable = false)
     private int seatNumber;

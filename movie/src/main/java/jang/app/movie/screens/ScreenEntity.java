@@ -15,7 +15,7 @@ import java.util.List;
 @Table(name = "screens")
 public class ScreenEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int screenId;
+    private Integer screenId;
 
     @Column(name = "screens", nullable = false)
     private int screenNumber;

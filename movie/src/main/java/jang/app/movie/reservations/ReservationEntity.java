@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class ReservationEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int reservationId;
+    private Long reservationId;
 
     @Column(name = "reservation_data", nullable = false)
     private LocalDateTime reservationData;

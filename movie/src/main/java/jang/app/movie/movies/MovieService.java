@@ -63,11 +63,9 @@ public class MovieService {
         List<MovieEntity> entities = movieRepository.findAll();
         List<MovieDTO> dtos = new ArrayList<>();
         for (MovieEntity entity : entities) {
-            log.info(">>>>>>>>>>>🕵️‍♂️movieDTO 잘 들어가 있나 확인해보기🕵️‍♂️<<<<<<<<<");
             MovieDTO dto = entity.toDTO();
             dtos.add(dto);
-            log.info("확인 작업 {}: ",dtos);
-            log.info(">>>>>>>>>>>🕵️‍♂️movieDTO 잘 들어가 있나 확인해보기🕵️‍♂️<<<<<<<<<");
+
         }
 
         return dtos;
