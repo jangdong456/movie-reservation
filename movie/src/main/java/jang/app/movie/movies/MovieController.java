@@ -1,5 +1,7 @@
 package jang.app.movie.movies;
 
+import jang.app.movie.cinemas.CinemaDTO;
+import jang.app.movie.cinemas.CinemaService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,9 @@ public class MovieController {
     @Autowired
     private MovieService movieService;
 
+    @Autowired
+    private CinemaService cinemaService;
+
     @GetMapping("/movies/now-playing")
     @ResponseBody
     public List<MovieDTO> getMovieData() {
@@ -26,8 +31,9 @@ public class MovieController {
     public String index(Model model) {
         List<MovieDTO> movieDto = movieService.getindex();
         model.addAttribute("movieDto", movieDto);
+
+        List<CinemaDTO> cinemaDTOs = cinemaService.getFindCinema();
+        model.addAttribute("cinemaDTO", cinemaDTOs);
         return "index";
     }
-
-
 }

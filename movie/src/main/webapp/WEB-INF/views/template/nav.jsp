@@ -26,13 +26,7 @@
                                 <div class="nav-arrow"><i class="fas fa-chevron-down"></i></div>
                                 <ul class="collapse nav">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="homepage-1.html">Homepage 1</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="homepage-2.html">Homepage 2</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="homepage-3.html">Homepage 3</a>
+                                        <a class="nav-link" href="/bookingModal">예매하기</a>
                                     </li>
                                 </ul>
                             </li>
@@ -40,42 +34,32 @@
                                 <a class="nav-link" href="#" data-role="nav-toggler">영화관</a>
                                 <div class="nav-arrow"><i class="fas fa-chevron-down"></i></div>
                                 <ul class="collapse nav">
+
                                     <li class="nav-item nav-item-arrow-down nav-hover-show-sub">
                                         <a class="nav-link" href="#" data-role="nav-toggler">서울</a>
                                         <div class="nav-arrow"><i class="fas fa-chevron-down"></i></div>
                                         <ul class="collapse nav">
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="movies-blocks.html">서울1</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="movies-blocks-sidebar-right.html">서울2</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="movies-posters.html">서울3</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="movies-posters-sidebar-right.html">서울4</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="movies-list.html">서울5</a>
-                                            </li>
+
+                                            <c:forEach var="cinema" items="${cinemaDTO}" begin="3" end="7">
+
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="movies-blocks.html">${cinema.cinemaName}</a>
+                                                </li>
+
+                                            </c:forEach>
                                         </ul>
                                     </li>
-
 
                                     <li class="nav-item nav-item-arrow-down nav-hover-show-sub">
                                         <a class="nav-link" href="#" data-role="nav-toggler">인천</a>
                                         <div class="nav-arrow"><i class="fas fa-chevron-down"></i></div>
                                         <ul class="collapse nav">
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="sign-in.html">인천1</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="sign-up.html">인천2</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="sign-up.html">인천3</a>
-                                            </li>
+
+                                            <c:forEach var="cinema" items="${cinemaDTO}" begin="0" end="2">
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="sign-in.html">${cinema.cinemaName}</a>
+                                                </li>
+                                            </c:forEach>
                                         </ul>
                                     </li>
 

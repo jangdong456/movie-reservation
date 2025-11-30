@@ -1,0 +1,280 @@
+.row.align-items-stretch {
+    /* row의 높이를 자식 요소의 높이와 일치시킵니다. */
+    align-items: stretch;
+}
+
+.column-divider-wrap {
+    /* 영역 전체에 경계선을 적용 */
+    border-right: 1px solid #ccc;
+    /* 내부 패딩 */
+    padding-right: 15px;
+    /* row 내에서 높이를 최대로 늘리기 위해 필수 */
+    display: flex;
+    flex-direction: column;
+}
+
+/* 아래의 내용을 묶어주는 스타일 (필요 시) */
+.column-content {
+    margin-top: 15px;
+    padding-left: 15px; /* 헤더와 줄을 맞추기 위해 */
+}
+
+/* 내부 row의 좌우 여백을 제거 (Bootstrap 4의 경우 no-gutters) */
+.column-content .row.no-gutters {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* 지역명 리스트 스타일 */
+.region-list {
+    /* 수평선이 영역을 벗어나지 않도록 패딩 조정 */
+    padding-right: 5px;
+    border-right: 1px solid #ddd; /* 지역명과 목록 사이 구분선 */
+}
+
+/* 지역명 링크 스타일 (active 클래스 필요 시) */
+.region-name.active {
+    font-weight: bold;
+    color: #007bff; /* 부트스트랩 primary 색상 */
+}
+
+/* 지점 목록 영역 스타일 */
+.cinema-list-area {
+    padding-left: 10px;
+}
+.cinema-list-area ul {
+    padding-left: 0; /* ul의 기본 패딩 제거 */
+    list-style: none; /* 리스트 앞 점 제거 */
+}
+
+/* ---------------------------------- */
+/* 3. 스크롤 영역 스타일 (컬럼 2, 3 등에 적용) */
+/* ---------------------------------- */
+.scrollable-content {
+    /* ⭐️ 스크롤이 생길 최대 높이를 지정합니다. ⭐️ */
+    /* 예: 뷰포트 높이의 50%나 고정된 400px 등으로 설정할 수 있습니다. */
+    max-height: 350px;
+
+    /* ⭐️ 내용이 max-height를 초과하면 수직 스크롤바를 만듭니다. ⭐️ */
+    overflow-y: auto;
+
+    /* 스크롤 영역 내부에도 패딩이 필요하다면 추가합니다. */
+    padding: 10px;
+}
+
+.scrollable-content ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0; /* 목록 아래 여백 제거 */
+}
+
+/* ---------------------------------- */
+/* 4. 날짜 선택기 스타일 */
+/* ---------------------------------- */
+.date-selector-content {
+    padding: 10px;
+}
+
+/* 화살표 버튼 스타일 */
+.date-nav-btn {
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 5px 10px;
+}
+
+/* 날짜 항목 컨테이너 */
+.date-display-area {
+    /* 날짜 항목들이 깔끔하게 중앙 정렬되도록 */
+    flex-wrap: nowrap;
+}
+
+/* 개별 날짜 항목 스타일 */
+.date-item {
+    cursor: pointer;
+    text-align: center;
+    padding: 5px 2px;
+    border-radius: 5px;
+    margin: 0 2px;
+    flex-grow: 1; /* 일주일 7일이 균등하게 공간을 나누도록 */
+    font-size: 0.9em;
+}
+
+.date-item:hover {
+    background-color: #f0f0f0;
+}
+
+/* 오늘 날짜 또는 선택된 날짜 강조 */
+.date-item.selected {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+/* ---------------------------------- */
+/* 5. 날짜 이동 영역 아래 수평 구분선 스타일 */
+/* ---------------------------------- */
+.date-navigation {
+    /* 하단에 얇고 연한 회색의 경계선을 추가합니다. */
+    border-bottom: 1px solid #ddd;
+
+    /* 경계선과 날짜 항목 사이에 공간을 확보합니다. */
+    padding-bottom: 10px;
+
+    /* 이 수평선 아래에 있는 내용(예: 영화 시간표)과의 간격을 둡니다. */
+    margin-bottom: 10px;
+}
+
+/* ---------------------------------- */
+/* 6. 상영 시간표 박스 스타일 */
+/* ---------------------------------- */
+.showtime-display-area {
+    /* 박스를 수평으로 나열하기 위해 Flexbox 컨테이너로 설정 */
+    display: flex;
+    flex-wrap: wrap; /* 박스가 넘치면 다음 줄로 이동 */
+    gap: 8px; /* 박스들 사이의 간격 */
+    padding: 10px; /* 스크롤 영역 내부 패딩 */
+}
+
+.showtime-box {
+    /* 버튼처럼 보이도록 설정 */
+    display: flex;
+    flex-direction: column; /* 내용을 위에서 아래로 쌓음 */
+    align-items: center; /* 내용을 중앙 정렬 */
+
+    /* 네모 박스의 크기 지정 (예시) */
+    width: 90px; /* 박스 너비 */
+    height: 60px; /* 박스 높이 */
+
+    /* 외형 */
+    border: 1px solid #007bff; /* 부트스트랩 파란색 테두리 */
+    border-radius: 4px;
+    padding: 5px;
+    background-color: #f8f9fa; /* 연한 배경색 */
+
+    /* 텍스트 스타일 */
+    text-decoration: none; /* 링크 밑줄 제거 */
+    color: #212529; /* 글자색 */
+    font-family: inherit;
+    transition: background-color 0.2s;
+}
+
+.showtime-box:hover {
+    background-color: #e2e6ea;
+}
+
+/* 시간 (큰 글씨) */
+.showtime-box .time-main {
+    font-size: 1.1em;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+/* 잔여석 정보 (작은 글씨) */
+.showtime-box .seat-info {
+    font-size: 0.8em;
+    line-height: 1.2;
+}
+
+/* ⭐️ 매진된 박스 스타일 ⭐️ */
+.showtime-box.sold-out {
+    border-color: #dc3545; /* 빨간색 테두리 */
+    background-color: #f2f2f2;
+    color: #6c757d; /* 회색 글자 */
+    cursor: not-allowed;
+    pointer-events: none; /* 클릭 불가 */
+}
+.showtime-box.sold-out .seat-available {
+    font-weight: bold;
+    color: #dc3545; /* 잔여석 0을 빨갛게 */
+}
+
+/* styles.css에도 추가해 주세요 */
+.showtime-box.selected-time {
+    border: 2px solid green;
+    background-color: #d4edda;
+}
+
+/* ---------------------------------- */
+/* 7. 선택된 항목 공통 스타일 (컬럼 1, 2) */
+/* ---------------------------------- */
+
+/* 컬럼 1: 지역명 (서울, 인천) 선택 시 */
+.region-name.selected-item,
+.region-name.selected-item:hover {
+    font-weight: bold;
+    color: white !important; /* 글씨색을 흰색으로 강제 */
+    background-color: #007bff; /* 파란색 배경 (Bootstrap Primary) */
+    border-radius: 4px;
+    padding: 2px 5px;
+}
+
+/* 컬럼 1: 영화관 지점 선택 시 */
+.cinema-list-area a.selected-item,
+.cinema-list-area a.selected-item:hover {
+    font-weight: bold;
+    color: #007bff !important; /* 글씨색을 파란색으로 강제 */
+    background-color: #e9ecef; /* 연한 회색 배경 */
+    border-radius: 4px;
+    padding: 2px;
+}
+
+/* 컬럼 2: 상영영화 선택 시 */
+.column-content.scrollable-content a.selected-item,
+.column-content.scrollable-content a.selected-item:hover {
+    font-weight: bold;
+    color: white !important; /* 글씨색을 흰색으로 강제 */
+    background-color: #28a745; /* 초록색 배경 (Bootstrap Success) */
+    border-radius: 4px;
+    padding: 2px;
+}
+
+/* ---------------------------------- */
+/* 8. 상영영화 목록 글씨 크기 확대 및 간격 조정 (컬럼 2) */
+/* ---------------------------------- */
+
+/* 상영영화 목록의 개별 링크 글씨 크기를 확대하고 여백을 줍니다. */
+.column-content.scrollable-content ul a {
+    /* ⭐️ 글씨 크기 확대 ⭐️ */
+    font-size: 1.1rem; /* 기본보다 10% 크게 */
+
+    /* ⭐️ 줄 간격을 넓혀서 목록이 답답해 보이지 않게 합니다. ⭐️ */
+    line-height: 2.5;
+
+    /* 링크 자체가 d-block이 아니라면 블록 요소로 만들어 클릭 영역을 넓힙니다. */
+    display: block;
+
+    /* 링크의 상하 패딩을 늘려 클릭하기 편하게 합니다. */
+    padding: 5px 10px;
+
+    /* 기본 텍스트 색상 */
+    color: #212529;
+
+    /* 마우스 오버 시 스타일 */
+    transition: background-color 0.15s;
+}
+
+.column-content.scrollable-content ul a:hover {
+    background-color: #f8f9fa; /* 마우스 오버 시 연한 배경색 */
+    text-decoration: none;
+}
+
+/* ---------------------------------- */
+/* 기존 상영영화 선택 스타일 유지 및 강화 */
+/* ---------------------------------- */
+
+/* 컬럼 2: 상영영화 선택 시 (기존 스타일 유지하며 padding 조정) */
+.column-content.scrollable-content a.selected-item,
+.column-content.scrollable-content a.selected-item:hover {
+    font-weight: bold;
+    color: white !important; /* 글씨색을 흰색으로 강제 */
+    background-color: #28a745; /* 초록색 배경 (Bootstrap Success) */
+    border-radius: 4px;
+
+    /* ⭐️ 기존 padding을 유지하거나, 확대된 폰트에 맞춰 조정합니다. ⭐️ */
+    padding: 5px 10px; /* 위에서 설정한 padding과 동일하게 유지 */
+}
+
+.container.text-center {
+    /* 상단 마진(Margin-Top)을 사용하여 윗 공간 확보 */
+    margin-top: 30px; /* 원하는 크기로 조절 (예: 20px, 40px 등) */
+}
