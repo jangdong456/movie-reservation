@@ -278,3 +278,44 @@
     /* 상단 마진(Margin-Top)을 사용하여 윗 공간 확보 */
     margin-top: 30px; /* 원하는 크기로 조절 (예: 20px, 40px 등) */
 }
+
+/* 컬럼 헤더(제목) 스타일 */
+.column-header {
+    /* 폰트 크기를 키웁니다. (예시: 1.5rem, 약 24px) */
+    font-size: 1.4rem;
+
+    /* 글씨를 더 굵게 만듭니다. */
+    font-weight: bold;
+
+    /* 헤더 아래쪽에 경계선을 추가하여 구분할 수도 있습니다. (선택 사항) */
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
+    margin-bottom: 10px; /* 헤더와 내용 사이 간격 */
+}
+
+/* ---------------------------------- */
+/* 9. 선택 정보 표시 영역 스타일 (컬럼 3) */
+/* ---------------------------------- */
+
+/* 전체 선택 정보 영역의 패딩 조정 */
+#latest-selection-display {
+    padding: 10px !important; /* 내부 패딩을 늘려서 공간 확보 */
+}
+
+/* 개별 선택 항목의 글씨 크기를 키웁니다. */
+.selection-line {
+    /* 폰트 크기를 키웁니다. (예시: 1.1rem, 기본보다 약간 크게) */
+    font-size: 1.1rem;
+
+    /* 줄 간격을 약간 늘려 가독성을 높입니다. */
+    line-height: 1.6;
+}
+
+.region-name,
+.cinema-list-area a {
+    font-size: 1.1rem; /* 글씨 크기 확대 */
+    padding: 3px 5px; /* 클릭 영역 확보 및 가독성 개선 */
+    display: block;
+    /* ... 기타 스타일 */
+}
+    이 규칙 덕분에 **지역명 (`.region-name`)**과 **동적으로 생성되는 영화관 이름 (`.cinema-list-area a`)**의 글씨 크기가 모두 `1.1rem`로 커졌습니다.

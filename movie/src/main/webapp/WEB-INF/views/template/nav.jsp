@@ -26,7 +26,7 @@
                                 <div class="nav-arrow"><i class="fas fa-chevron-down"></i></div>
                                 <ul class="collapse nav">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="/bookingModal">예매하기</a>
+                                        <a class="nav-link" href="/reservation">예매하기</a>
                                     </li>
                                 </ul>
                             </li>

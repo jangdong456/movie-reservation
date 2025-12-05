@@ -29,11 +29,21 @@ public class MovieController {
 
     @GetMapping("/")
     public String index(Model model) {
-        List<MovieDTO> movieDto = movieService.getindex();
+        List<MovieDTO> movieDto = movieService.getIndexPage();
         model.addAttribute("movieDto", movieDto);
 
         List<CinemaDTO> cinemaDTOs = cinemaService.getFindCinema();
         model.addAttribute("cinemaDTO", cinemaDTOs);
         return "index";
+    }
+
+    @GetMapping("/reservation")
+    public String getReservaiotn(Model model) {
+        List<MovieDTO> movieDto = movieService.getIndexPage();
+        model.addAttribute("movieDto", movieDto);
+
+        List<CinemaDTO> cinemaDto = movieService.getCinemaName();
+        model.addAttribute("cinemaDto", cinemaDto);
+        return "reservation/bookingModal";
     }
 }

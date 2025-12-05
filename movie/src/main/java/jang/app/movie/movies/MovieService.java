@@ -1,7 +1,11 @@
 package jang.app.movie.movies;
 
+import jang.app.movie.cinemas.CinemaDTO;
+import jang.app.movie.cinemas.CinemaEntity;
+import jang.app.movie.cinemas.CinemaRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -16,6 +20,8 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class MovieService {
 
+    @Autowired
+    private CinemaRepository cinemaRepository;
     private final RestTemplate restTemplate;
     private final MovieRepository movieRepository;
 
@@ -59,15 +65,25 @@ public class MovieService {
         return List.of();
     }
 
-    public List<MovieDTO> getindex() {
+    public List<MovieDTO> getIndexPage() {
         List<MovieEntity> entities = movieRepository.findAll();
         List<MovieDTO> dtos = new ArrayList<>();
         for (MovieEntity entity : entities) {
             MovieDTO dto = entity.toDTO();
             dtos.add(dto);
-
         }
 
+        return dtos;
+    }
+
+    public List<CinemaDTO> getCinemaName() {
+        List<CinemaEntity> entity = cinemaRepository.findAll();
+        List<CinemaDTO> dtos = new ArrayList<>();
+
+        for (CinemaEntity cinemaEntity : entity) {
+            CinemaDTO dto = cinemaEntity.toDTO();
+            dtos.add(dto);
+        }
         return dtos;
     }
 }

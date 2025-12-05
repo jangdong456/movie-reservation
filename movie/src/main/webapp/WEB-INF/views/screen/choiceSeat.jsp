@@ -5,11 +5,15 @@
         <head>
         <c:import url="/WEB-INF/views/template/header.jsp"></c:import>
         </head>
+
         <body class="body">
         <c:import url="/WEB-INF/views/template/nav.jsp"></c:import>
 
         <!-- 바디 시작 부분 -->
-
+        <h1>좌석 선택 페이지</h1>
+        <p>선택된 영화관: ${selectedCinema}</p>
+        <p>선택된 영화: ${selectedMovie}</p>
+        <p>선택된 시간: ${selectedDate} ${selectedTime}</p>
         <!-- 바디 끝 부분 -->
 
 

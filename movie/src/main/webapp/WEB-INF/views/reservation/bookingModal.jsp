@@ -29,6 +29,16 @@
 
                     <div class="col-9 cinema-list-area">
                         <ul id="cinema-list" class="list-unstyled"></ul>
+                        <c:forEach var="cinema" items="${cinemaDto}" begin="3" end="7">
+                            <li class="cinema-item" data-region="서울" style="display: none;">
+                                <a href="#">${cinema.cinemaName}</a>
+                            </li>
+                        </c:forEach>
+                        <c:forEach var="cinema" items="${cinemaDto}" begin="0" end="2">
+                            <li class="cinema-item" data-region="인천" style="display: none;">
+                                <a href="#">${cinema.cinemaName}</a>
+                            </li>
+                        </c:forEach>
                     </div>
 
                 </div>
@@ -42,20 +52,13 @@
                 </div>
 
                 <div class="column-content scrollable-content">
-                    <ul class="list-unstyled">
-                        <li><a href="#">영화 1: 오펜하이머</a></li>
-                        <li><a href="#">영화 2: 아바타</a></li>
-                        <li><a href="#">영화 3: 범죄도시</a></li>
-                        <li><a href="#">영화 4: 엘리멘탈</a></li>
-                        <li><a href="#">영화 5: 콘크리트 유토피아</a></li>
-                        <li><a href="#">영화 6: 밀수</a></li>
-                        <li><a href="#">영화 7: 노량</a></li>
-                        <li><a href="#">영화 8: 서울의 봄</a></li>
-                        <li><a href="#">영화 9: 파묘</a></li>
-                        <li><a href="#">영화 10: 외계인 2부</a></li>
-                        <li><a href="#">영화 11: 테스트 항목</a></li>
-                        <li><a href="#">영화 12: 테스트 항목</a></li>
-                    </ul>
+
+                        <ul class="list-unstyled">
+                            <c:forEach var="movie" items="${movieDto}" begin="0" end="9">
+                                <li><a href="#">${movie.title}</a></li>
+                            </c:forEach>
+                        </ul>
+
                 </div>
             </div>
 
@@ -97,11 +100,9 @@
                             </span>
                         </a>
                     </div>
-                    <%-- >>>>>>> [추가된 부분] "선택" 버튼 <<<<<<< --%>
-                        <div class="mt-3 text-center"> <%-- 상단 마진 및 중앙 정렬 --%>
+                        <div class="mt-3 text-center">
                             <button type="button" class="btn btn-primary btn-lg" id="select-button" disabled>선택</button>
                         </div>
-                    <%-- >>>>>>> [추가된 부분] 끝 <<<<<<< --%>
 
                 </div>
             </div>
