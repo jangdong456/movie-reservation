@@ -5,7 +5,7 @@
     <html>
         <head>
             <c:import url="/WEB-INF/views/template/header.jsp"></c:import>
-            <link rel="stylesheet" href="/css/styles.css">
+            <link rel="stylesheet" href="/css/bookingModal.css">
         </head>
         <body class="body">
             <c:import url="/WEB-INF/views/template/nav.jsp"></c:import>
@@ -19,6 +19,7 @@
             <div class="column-header">
                 영화관
             </div>
+
             <div class="column-content">
                 <div class="row no-gutters text-left">
 
@@ -29,18 +30,8 @@
 
                     <div class="col-9 cinema-list-area">
                         <ul id="cinema-list" class="list-unstyled"></ul>
-                        <c:forEach var="cinema" items="${cinemaDto}" begin="3" end="7">
-                            <li class="cinema-item" data-region="서울" style="display: none;">
-                                <a href="#">${cinema.cinemaName}</a>
-                            </li>
-                        </c:forEach>
-                        <c:forEach var="cinema" items="${cinemaDto}" begin="0" end="2">
-                            <li class="cinema-item" data-region="인천" style="display: none;">
-                                <a href="#">${cinema.cinemaName}</a>
-                            </li>
-                        </c:forEach>
-                    </div>
 
+                    </div>
                 </div>
             </div>
         </div>
@@ -88,6 +79,7 @@
                     <div id="showtime-list" class="showtime-display-area scrollable-content">
                         <a href="#" class="showtime-box">
                             <span class="time-main">20:05</span>
+                            <span class="screen-info">1관</span>
                             <span class="seat-info">
                                 잔여석 <span class="seat-available">267</span> / <span class="seat-total">332</span>
                             </span>
@@ -95,6 +87,7 @@
 
                         <a href="#" class="showtime-box">
                             <span class="time-main">21:40</span>
+                            <span class="screen-info">2관</span>
                             <span class="seat-info">
                                 잔여석 <span class="seat-available">2</span> / <span class="seat-total">332</span>
                             </span>
@@ -109,6 +102,27 @@
 
     </div>
 </div>
+            <script>
+                const cinemaData = [];
+
+                <c:forEach var="cinema" items="${cinemaDto}" begin="3" end="7">
+                    cinemaData.push({
+                        name: '${cinema.cinemaName}',
+                        region: '서울'
+                    });
+                </c:forEach>
+
+
+                <c:forEach var="cinema" items="${cinemaDto}" begin="0" end="2">
+                    cinemaData.push({
+                        name: '${cinema.cinemaName}',
+                        region: '인천' // begin/end 기준으로 인천 지역으로 지정
+                    });
+                </c:forEach>
+
+                console.log("주입된 cinemaData 배열:", cinemaData);
+            </script>
+
 
             <!-- footer -->
             <c:import url="/WEB-INF/views/template/footer.jsp"></c:import>

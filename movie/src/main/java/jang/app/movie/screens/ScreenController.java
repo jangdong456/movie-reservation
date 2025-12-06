@@ -14,6 +14,7 @@ public class ScreenController {
             @RequestParam("cinema") String cinema,
             @RequestParam("movie") String movie,
             @RequestParam("time") String time,
+            @RequestParam("screen") String screen,
             @RequestParam("date") String date,
             Model model
     ) {
@@ -21,6 +22,7 @@ public class ScreenController {
         model.addAttribute("selectedCinema", cinema);
         model.addAttribute("selectedMovie", movie);
         model.addAttribute("selectedTime", time);
+        model.addAttribute("selectedScreen", screen);
         model.addAttribute("selectedDate", date);
 
         // 2. (선택 사항) 좌석 선택에 필요한 추가 정보 (예: 해당 상영 스케줄의 ID, 상영관 좌석 배치도 등)

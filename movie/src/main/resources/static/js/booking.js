@@ -38,11 +38,6 @@ $(document).ready(function() {
         }
 
 
-    // ⭐️ 여기에 임의의 테스트 데이터를 하드코딩합니다. ⭐️
-    const cinemaData = [
-
-    ];
-
     // ----------------------------------------------------
     // 컬럼 1: 지역명 (서울/인천) 클릭 이벤트
     // ----------------------------------------------------
@@ -56,8 +51,10 @@ $(document).ready(function() {
         // 🚨 중요: 새 지역을 선택했으니, 영화관과 영화, 시간 선택을 초기화해야 합니다.
         // 현재는 지점 목록 출력 로직만 남겨둠
 
+
         // 1. 해당 지역의 지점만 필터링합니다.
         const selectedRegion = $(this).data('region');
+
         const filteredCinemas = cinemaData.filter(cinema => cinema.region === selectedRegion);
 
         // 2. HTML을 생성합니다.
@@ -65,8 +62,9 @@ $(document).ready(function() {
         if (filteredCinemas.length > 0) {
             listHtml += '<ul class="list-unstyled">'; // list-unstyled 클래스 유지
             filteredCinemas.forEach(cinema => {
-                // cinema.id가 있다면 data-id 속성으로 추가해야 합니다.
-                listHtml += `<li><a href="#">${cinema.name}</a></li>`;
+                listHtml += `<li class="cinema-item" data-region="${selectedRegion}">
+                                            <a href="#" data-name="${cinema.name}">${cinema.name}</a>
+                                         </li>`;
             });
             listHtml += '</ul>';
         } else {
@@ -100,6 +98,7 @@ $(document).ready(function() {
 
         // ⭐️ 추가된 로직 1: 선택된 영화관 이름 저장 ⭐️
         selectedCinema = $(this).text();
+//        selectedCinema = $(this).data('name');
 
         // 🚨 중요: 지점을 선택했으니, 영화 선택과 시간표를 초기화해야 합니다.
         selectedMovie = '';
@@ -108,7 +107,8 @@ $(document).ready(function() {
         // ⭐️ [수정] 세 정보를 모두 표시하는 함수 호출 ⭐️
         updateSelectionDisplay();
 
-        console.log("선택된 영화관:", $(this).text());
+//        console.log("선택된 영화관:", $(this).text());
+        console.log("선택된 영화관:", selectedCinema);
         // ⭐️ 다음 단계 (영화 목록 업데이트) 로직이 여기에 추가됩니다. ⭐️
     });
 
@@ -147,6 +147,7 @@ $(document).ready(function() {
 
         // 2. 선택된 시간 정보 저장
         selectedTime = $(this).find('.time-main').text();
+        selectedScreen = $(this).find('.screen-info').text();
 
         // 3. 선택 표시 및 버튼 활성화 체크
         updateSelectionDisplay();
@@ -187,6 +188,7 @@ $(document).ready(function() {
             cinema: selectedCinema,
             movie: selectedMovie,
             time: selectedTime,
+            screen: selectedScreen,
             date: selectedDate
         }).toString();
 

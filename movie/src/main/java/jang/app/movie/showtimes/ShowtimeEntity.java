@@ -19,9 +19,6 @@ public class ShowtimeEntity {
     @Column(name = "showtime_data", nullable = false)
     private LocalDateTime showtimeData;
 
-    @Column(name = "price", nullable = false)
-    private int price;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "movie_id")
     private MovieEntity movieEntity;
@@ -31,9 +28,8 @@ public class ShowtimeEntity {
     private ScreenEntity screenEntity;
 
     @Builder
-    public ShowtimeEntity(LocalDateTime showtimeData, int price, MovieEntity movieEntity, ScreenEntity screenEntity) {
+    public ShowtimeEntity(LocalDateTime showtimeData, MovieEntity movieEntity, ScreenEntity screenEntity) {
         this.showtimeData = showtimeData;
-        this.price = price;
         this.movieEntity = movieEntity;
         this.screenEntity = screenEntity;
     }
