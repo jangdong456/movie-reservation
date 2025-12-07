@@ -26,8 +26,9 @@ public class ReservationEntity {
     private MemberEntity memberEntity;
 
     @Builder
-    public ReservationEntity(LocalDateTime reservationData, int totalPrice) {
+    public ReservationEntity(LocalDateTime reservationData, int totalPrice, MemberEntity memberEntity) {
         this.reservationData = reservationData;
         this.totalPrice = totalPrice;
+        this.memberEntity = memberEntity;
     }
 }

@@ -205,8 +205,10 @@ function updateSeatAvailability() {
             const screenName = SCREEN_NAME_FROM_JSP;
             const cinema = CINEMA_NAME_FROM_JSP;
             const movieTitle = MOVIE_TITLE_FROM_JSP;
-            const memberId = 22
+            const memberId = 1
             const totalPriceText = $('#total-price').text().replace(/[^0-9]/g, ''); // '35,000원' -> '35000'
+            const now = new Date();
+            const currentDateTime = now.toISOString();
 
         const paymentData = {
                 "showtimeId": showtimeId,
@@ -216,7 +218,8 @@ function updateSeatAvailability() {
                 "cinema": cinema,
                 "movieTitle": movieTitle,
                 "peopleCounts": peopleCounts,
-                "selectedSeats": selectedSeats
+                "selectedSeats": selectedSeats,
+                "currentDateTime": currentDateTime
             };
 
         // 3. 유효성 검사 통과 시 (결제 진행 로직)
