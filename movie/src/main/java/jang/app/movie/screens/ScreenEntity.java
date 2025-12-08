@@ -18,7 +18,7 @@ public class ScreenEntity {
     private Integer screenId;
 
     @Column(name = "screens", nullable = false)
-    private int screenNumber;
+    private String screenNumber;
 
     // N:1 관계 (N: Screen, 1: Cinema)
     @ManyToOne(fetch = FetchType.LAZY)
@@ -34,7 +34,7 @@ public class ScreenEntity {
     private List<ShowtimeEntity> showtimeEntityList  = new ArrayList<>();
 
     @Builder
-    public ScreenEntity(int screenNumber, CinemaEntity cinemaEntity) {
+    public ScreenEntity(String screenNumber, CinemaEntity cinemaEntity) {
         this.screenNumber = screenNumber;
         this.cinemaEntity = cinemaEntity;
     }

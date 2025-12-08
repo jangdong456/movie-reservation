@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @Builder
 public class ScreenDTO {
-    private int screenNumber;
+    private String screenNumber;
 
     public ScreenEntity toEntity() {
         return ScreenEntity.builder()
