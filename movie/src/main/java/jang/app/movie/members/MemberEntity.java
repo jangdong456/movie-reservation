@@ -2,6 +2,7 @@ package jang.app.movie.members;
 
 import jakarta.persistence.*;
 import jang.app.movie.reservations.ReservationEntity;
+import jang.app.movie.review.ReviewEntity;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -34,9 +35,13 @@ public class MemberEntity {
     @Column(name = "member_name", nullable = false)
     private String memberName;
 
-    // 1:N 관계
+    // 1:N 관계 - members(1) : reservation(n)
     @OneToMany(mappedBy = "memberEntity")
     private List<ReservationEntity> reservationEntityList = new ArrayList<>();
+
+    // 1:N 관계 - members(1) : reviews(n)
+    @OneToMany(mappedBy = "memberEntity")
+    private List<ReviewEntity> reviewEntityList = new ArrayList<>();
 
     @Builder
     public MemberEntity(String loginId, String memberPassword, String memberPhone, String memberName) {
