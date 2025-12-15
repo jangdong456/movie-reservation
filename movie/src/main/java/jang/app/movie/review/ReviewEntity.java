@@ -4,8 +4,11 @@ import jakarta.persistence.*;
 import jang.app.movie.members.MemberEntity;
 import jang.app.movie.movies.MovieEntity;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.lang.reflect.Member;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -14,12 +17,17 @@ import java.util.List;
 @Table(name = "reviews")
 @Builder
 @AllArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
 public class ReviewEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long reviewId;
 
     @Column(name = "review_content", columnDefinition = "TEXT")
     private String reviewContent;
+
+    @Column(name = "review_create")
+    @CreatedDate
+    private LocalDateTime createAt;
 
     // 1: N 관계 - memebers(1) : reviews(n)
     @ManyToOne(fetch = FetchType.LAZY)

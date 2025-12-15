@@ -30,5 +30,15 @@ public class ReviewService {
         reviewRepository.save(reviewEntity);
     }
 
+    public void findReview(ReviewDTO dto) {
+        MemberEntity member = memberRepository.findById(dto.getMemberId())
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 회원 ID입니다: " + dto.getMemberId()));
+        MovieEntity movie = movieRepository.findById(dto.getMovieId())
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 회원 ID입니다: " + dto.getMovieId()));
+
+        ReviewEntity reviewEntity = dto.toEntity(member, movie);
+
+        reviewRepository.findById(member.getMemberId());
+    }
 
 }
