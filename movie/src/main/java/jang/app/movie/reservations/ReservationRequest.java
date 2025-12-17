@@ -37,6 +37,7 @@ public class ReservationRequest {
                 .totalPrice(this.totalPrice)
                 .reservationData(this.currentDateTime)
                 .memberId(this.memberId)
+                .movieTitle(this.movieTitle)
                 .build();
     }
 }

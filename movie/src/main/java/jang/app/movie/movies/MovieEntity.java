@@ -1,6 +1,7 @@
 package jang.app.movie.movies;
 
 import jakarta.persistence.*;
+import jang.app.movie.reservations.ReservationEntity;
 import jang.app.movie.review.ReviewEntity;
 import jang.app.movie.showtimes.ShowtimeEntity;
 import lombok.*;
@@ -36,6 +37,10 @@ public class MovieEntity {
     // 1:N 관계 movieEntity(1) : reviews(n)
     @OneToMany(mappedBy = "movieEntity")
     private List<ReviewEntity> reviewEntityList = new ArrayList<>();
+
+    // 1:N 관계 movieEntity(1) : reservations(n)
+    @OneToMany(mappedBy = "movieEntity")
+    private List<ReservationEntity> reservationEntityList = new ArrayList<>();
 
 //    public MovieEntity(String title, Duration movieTime, String posterPath, String overview) {
 //        this.title = title;
