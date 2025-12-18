@@ -39,4 +39,10 @@ public class ReservationController {
         List<Object[]> result = reservationService.findReservation(movieTitle);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
+
+    @GetMapping("/reservation/total")
+    public ResponseEntity<ReservationStats> getTotal(@RequestParam(name = "loginId") String loginId) {
+        ReservationStats stats = reservationService.getTotal(loginId);
+        return ResponseEntity.ok(stats);
+    }
 }

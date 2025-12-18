@@ -6,7 +6,9 @@ import jang.app.movie.movies.MovieEntity;
 import jang.app.movie.movies.MovieRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
@@ -18,6 +20,9 @@ public class ReservationService {
 
     @Autowired
     private ReservationRepository reservationRepository;
+
+    @Autowired
+    private ReservationStatsRepository reservationStatsRepository;
 
     @Autowired
     private MemberRepository memberRepository;
@@ -45,14 +50,27 @@ public class ReservationService {
         reservationRepository.save(reservationEntity);
     }
 
-    public void postSeat() {
-
-    }
-
     public List<Object[]> findReservation(String movieTitle) {
         log.info("@@@@@@@시작@@@@@");
         List<Object[]> find = reservationRepository.findMovieReservation(movieTitle);
         log.info(">>>>>>>>>>> 결과물 : {} <<<<<<<<<<<", find);
         return find;
+    }
+
+    @Scheduled(cron = "0 */5 * * * *")
+    @Transactional
+    public void refreshReservation() {
+        try {
+            reservationRepository.refreshReservationStats();
+            log.info("통계 테이블 업데이트 성공");
+        } catch (Exception e) {
+            log.error("통계테이블 업데이트 실패", e);
+            throw e;
+        }
+    }
+
+    public ReservationStats getTotal(String loginId) {
+        return reservationStatsRepository.findByLoginId(loginId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 회원의 통계 데이터가 존재하지 않습니다."));
     }
 }

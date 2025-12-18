@@ -2,11 +2,13 @@ package jang.app.movie.reservations;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ReservationRepository extends JpaRepository<ReservationEntity, Long> {
@@ -29,4 +31,23 @@ public interface ReservationRepository extends JpaRepository<ReservationEntity, 
     List<Object[]> findMovieReservation(
             @Param("title") String title
     );
+
+    @Modifying
+    @Query( value = """
+            insert into reservation_stats(member_id, login_id, total_count, total_price, updated_at)
+            select
+                m.member_id,
+                m.login_id,
+                COUNT(m.member_id),
+                SUM(r.total_price),
+                NOW() 
+            from reservations r
+            join members m ON r.member_id = m.member_id
+            group by m.member_id, m.login_id
+            on duplicate key update
+                   total_count = VALUES(total_count),
+                   total_price = values(total_price),
+                   updated_at = NOW()
+            """, nativeQuery = true)
+    void refreshReservationStats();
 }
