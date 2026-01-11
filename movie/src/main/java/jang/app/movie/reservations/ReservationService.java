@@ -4,6 +4,7 @@ import jang.app.movie.members.MemberEntity;
 import jang.app.movie.members.MemberRepository;
 import jang.app.movie.movies.MovieEntity;
 import jang.app.movie.movies.MovieRepository;
+import jang.app.movie.seats.SeatRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -30,6 +31,9 @@ public class ReservationService {
     @Autowired
     private MovieRepository movieRepository;
 
+    @Autowired
+    private SeatRepository seatRepository;
+
     public void postReservation(ReservationDTO reservationDTO) {
         LocalDateTime truncatedDateTime = reservationDTO.getReservationData().truncatedTo(ChronoUnit.MINUTES);
         reservationDTO.setReservationData(truncatedDateTime);
@@ -45,7 +49,7 @@ public class ReservationService {
         MovieEntity movieEntity = movieRepository.findByTitle(movieTite)
                 .orElseThrow(() -> new IllegalArgumentException("해당 영화를 찾을 수 없습니다"));
 
-        ReservationEntity reservationEntity = reservationDTO.toEntity(memberEntity, movieEntity);
+        ReservationEntity reservationEntity = reservationDTO.toEntity(memberEntity, movieEntity,null);
 
         reservationRepository.save(reservationEntity);
     }
@@ -72,5 +76,21 @@ public class ReservationService {
     public ReservationStats getTotal(String loginId) {
         return reservationStatsRepository.findByLoginId(loginId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 회원의 통계 데이터가 존재하지 않습니다."));
+    }
+
+    public void postLock() {
+        /*
+        1.사용자 좌선 선택
+            - 현재 상태가 "예매 가능" 인지 확인 한다.
+                - 클라이언트에서 좌석 열과 번호를 받아 상태를 확인하면 된다.
+            - "예매 가능" 이면 DB에서 해당 좌석을 비관적 락을 건다.
+        2.좌석 상태를 결제진행 중 으로 업데이트 해야한다.
+        3.이 때 선점 시간과 함께 기록하여, 다른 사람이 락을 풀고 들어왔을 때도
+        "이미 결제 중인 좌석 입니다" 라는 메시지를 보여줍니다.
+        */
+
+        // seatRepository 에 좌석번호를 넘겨줘야함
+//        seatRepository.findByIdWithPessimisticLock(32);
+
     }
 }

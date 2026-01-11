@@ -29,7 +29,7 @@ public class ReviewEntity {
     @CreatedDate
     private LocalDateTime createAt;
 
-    // 1: N 관계 - memebers(1) : reviews(n)
+    // 1: N 관계 - members(1) : reviews(n)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private MemberEntity memberEntity;

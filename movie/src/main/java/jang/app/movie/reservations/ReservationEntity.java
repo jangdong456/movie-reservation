@@ -3,9 +3,12 @@ package jang.app.movie.reservations;
 import jakarta.persistence.*;
 import jang.app.movie.members.MemberEntity;
 import jang.app.movie.movies.MovieEntity;
+import jang.app.movie.seats.SeatEntity;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -32,14 +35,19 @@ public class ReservationEntity {
     @JoinColumn(name = "movie_id")
     private MovieEntity movieEntity;
 
+    // N:1 관계 seat(n) : reservations(1)
+    @OneToMany(mappedBy = "reservationEntity")
+    private  List<SeatEntity> seatEntityList = new ArrayList<>();
+
     @Builder
     public ReservationEntity(
             LocalDateTime reservationData, int totalPrice,
-            MemberEntity memberEntity, MovieEntity movieEntity
+            MemberEntity memberEntity, MovieEntity movieEntity, List<SeatEntity> seatEntity
     ) {
         this.reservationData = reservationData;
         this.totalPrice = totalPrice;
         this.memberEntity = memberEntity;
         this.movieEntity = movieEntity;
+        this.seatEntityList = seatEntity;
     }
 }

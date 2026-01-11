@@ -45,4 +45,9 @@ public class ReservationController {
         ReservationStats stats = reservationService.getTotal(loginId);
         return ResponseEntity.ok(stats);
     }
+
+    @PostMapping("/reservation/lock")
+    public void postLock() {
+
+    }
 }
