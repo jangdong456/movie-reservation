@@ -95,8 +95,8 @@
             </div>
 
             <%-- 스크린 좌석 부분--%>
-            <div class="row mt-5 justify-content-center">
                 <div class="col-12 text-center seat-map-container">
+            <div class="row mt-5 justify-content-center">
 
                     <div id="seat-map" class="d-inline-block">
                         <c:set var="rows" value="A,B,C,D,E,F" />

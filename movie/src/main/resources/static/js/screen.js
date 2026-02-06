@@ -111,45 +111,7 @@ $(document).on('click', '.btn-plus, .btn-minus', function() {
 });
 
 
-// ----------------------------------------------------
-// ⭐️ 좌석 선택/해제 토글 로직 (유지) ⭐️
-// ----------------------------------------------------
-$(document).on('click', '.seat-item.available', function() {
-    const $seat = $(this);
-    const seatId = $seat.data('seat-id');
-    const totalPeople = calculateTotalPeople();
 
-    if (totalPeople === 0) {
-        alert("먼저 인원수를 선택해 주세요.");
-        return;
-    }
-
-    if ($seat.hasClass('selected')) {
-        // 해제
-        $seat.removeClass('selected');
-        selectedSeats = selectedSeats.filter(id => id !== seatId);
-        resetTotalPriceDisplay(); // 좌석이 해제되었으므로 가격 0원 초기화
-
-    } else {
-        // 선택
-        if (selectedSeats.length < totalPeople) {
-            $seat.addClass('selected');
-            selectedSeats.push(seatId);
-
-            // ⭐️ 선택이 완료되었을 때만 가격 계산 ⭐️
-            if (selectedSeats.length === totalPeople) {
-                updateTotalPrice();
-            }
-        } else {
-            alert(`선택 인원(${totalPeople}명)을 초과하여 좌석을 선택할 수 없습니다.`);
-        }
-    }
-    // ⭐️ 좌석 선택 상태 변경 후 잠금/해제 상태를 업데이트합니다. ⭐️
-    updateSeatAvailability();
-});
-
-// 문서 로드 시 초기 가격 설정
-resetTotalPriceDisplay();
 
 
 // ⭐️ 새로 추가: 좌석 선택 완료 시 나머지 좌석을 잠그는 함수 ⭐️
@@ -270,3 +232,104 @@ function updateSeatAvailability() {
             }
         });
     }
+
+// 현재 설정된 총 인원수 구하기
+function getTotalPersonCount() {
+    let total = 0;
+    document.querySelectorAll('.count-input').forEach(input => {
+        total += parseInt(input.value) || 0;
+    });
+    return total;
+}
+
+// 1. 좌석 영역의 부모 요소(예: .seat-container)에 이벤트를 하나만 겁니다.
+// 부모 요소를 찾기 어렵다면 document에 걸어도 작동합니다.
+document.addEventListener('click', function(event) {
+    // 클릭된 요소가 .seat-item인지 확인
+    const seat = event.target.closest('.seat-item');
+    if (!seat || seat.classList.contains('reserved')) return;
+
+    const seatId = seat.getAttribute('data-seat-id');
+    const totalPeople = calculateTotalPeople(); // 기존에 만들어둔 총 인원수 계산 함수
+
+    // [케이스 A] 이미 선택한 좌석을 다시 클릭 (취소/Unlock)
+    if (seat.classList.contains('selected')) {
+        fetch('/reservation/unlock', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ seatId: seatId })
+        })
+        .then(response => {
+            if (response.ok) {
+                seat.classList.remove('selected');
+                seat.classList.add('available');
+
+                // 전역 배열 selectedSeats 업데이트 (바닐라 JS 방식)
+                selectedSeats = selectedSeats.filter(id => id !== seatId);
+
+                resetTotalPriceDisplay();
+                syncSeatStatus(); // 상태 동기화
+            }
+        });
+        return;
+    }
+
+    // [케이스 B] 빈 좌석을 클릭 (선택/Lock)
+    if (seat.classList.contains('available')) {
+        if (totalPeople === 0) {
+            alert("먼저 인원수를 선택해 주세요.");
+            return;
+        }
+
+        if (selectedSeats.length >= totalPeople) {
+            alert(`선택 인원(${totalPeople}명)을 모두 선택하셨습니다.`);
+            return;
+        }
+
+        fetch('/reservation/lock', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ seatId: seatId })
+        })
+        .then(response => {
+            if (response.ok) {
+                seat.classList.add('selected');
+                seat.classList.remove('available');
+                selectedSeats.push(seatId);
+
+                if (selectedSeats.length === totalPeople) {
+                    updateTotalPrice();
+                }
+                syncSeatStatus();
+            } else {
+                alert("이미 다른 사용자가 선점한 좌석입니다.");
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+});
+
+/**
+ * ⭐️ 바닐라 JS용 상태 관리 함수
+ */
+function syncSeatStatus() {
+    const totalPeople = calculateTotalPeople();
+    const selectedCount = selectedSeats.length;
+
+    // 현재 선택되지 않은 모든 빈 좌석들 추출
+    const availableSeats = document.querySelectorAll('.seat-item.available:not(.selected)');
+
+    if (selectedCount >= totalPeople && totalPeople > 0) {
+        // 인원 다 찼으면 나머지 좌석 비활성화
+        availableSeats.forEach(s => {
+            s.style.opacity = '0.5';
+            s.style.pointerEvents = 'none';
+        });
+    } else {
+        // 인원 남았으면 모든 빈 좌석 활성화
+        availableSeats.forEach(s => {
+            s.style.opacity = '1';
+            s.style.pointerEvents = 'auto';
+        });
+    }
+}
